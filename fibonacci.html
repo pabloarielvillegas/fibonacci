@@ -1,0 +1,37 @@
+<div id="resultado"></div>
+
+<script>
+  function sumarDigitos(num) {
+    // Convertir el número a una cadena de caracteres
+    var str = num.toString();
+
+    // Separar los dígitos de la cadena y sumarlos
+    var sum = 0;
+    for (var i = 0; i < str.length; i++) {
+      sum += parseInt(str[i]);
+    }
+
+    // Si la suma es mayor o igual a 10, volver a sumar los dígitos
+    if (sum >= 10) {
+      return sumarDigitos(sum);
+    } else {
+      return sum;
+    }
+  }
+
+  var a = 1, b = 1, c, d;
+
+  // Obtener el elemento div
+  var resultado = document.getElementById("resultado");
+
+  // Agregar el resultado de la función al elemento div
+  resultado.innerHTML += sumarDigitos(a) + " ";
+  resultado.innerHTML += sumarDigitos(b) + " ";
+
+  for (var i = 2; i < 96; i++) {
+    c = a + b;
+    resultado.innerHTML += sumarDigitos(c) + " ";
+    a = b;
+    b = c;
+  }
+</script>
